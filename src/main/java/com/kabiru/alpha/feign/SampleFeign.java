@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient(name="sampleFeign", url="http://127.0.0.1:8000/")
+@FeignClient(name="sampleFeign", url="http://127.0.0.1:8000/", configuration = FeignConfig.class)
 public interface SampleFeign {
 
     // Get all samples
