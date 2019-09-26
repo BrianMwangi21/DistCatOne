@@ -1,28 +1,29 @@
 package com.kabiru.alpha.rest;
 
 import com.kabiru.alpha.feign.SampleFeign;
+import com.kabiru.alpha.feign.StudentFeign;
 import com.kabiru.alpha.models.SampleClass;
+import com.kabiru.alpha.models.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
-@ComponentScan("com.kabiru.alpha.feign")
 @Component
 public class SampleRest implements CommandLineRunner {
 
-    private final SampleFeign sampleFeign;
+    private final StudentFeign studentFeign;
 
-    public SampleRest(SampleFeign sampleFeign) {
+    public SampleRest(StudentFeign studentFeign) {
         // Empty constructor
-        this.sampleFeign = sampleFeign;
+        this.studentFeign = studentFeign;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
         // 1. Create sample
-        // SampleClass sampleClass = sampleFeign.createSample( new SampleClass( "kabiru" ) );
-        // System.out.println( sampleClass );
+        Student new_student = studentFeign.createStudent( new Student( "94227" , "Kabiru" ) );
+        System.out.println( new_student );
 
         // 2. Patch
         //sampleClass.setUsername("mwangi");
