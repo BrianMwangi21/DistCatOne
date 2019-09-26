@@ -1,11 +1,9 @@
 package com.kabiru.alpha.rest;
 
-import com.kabiru.alpha.feign.SampleFeign;
 import com.kabiru.alpha.feign.StudentFeign;
-import com.kabiru.alpha.models.SampleClass;
+import com.kabiru.alpha.models.BlindDate;
 import com.kabiru.alpha.models.Student;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,13 +19,14 @@ public class SampleRest implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        // 1. Create sample
+        // 1. Create student
         Student new_student = studentFeign.createStudent( new Student( "94227" , "Kabiru" ) );
         System.out.println( new_student );
 
-        // 2. Patch
-        //sampleClass.setUsername("mwangi");
-        //SampleClass update_sample = sampleFeign.updateSample( sampleClass.getId(), sampleClass );
-        //System.out.println( update_sample );
+        // Student ID given : 40
+
+        // 2. Request for a blind date match
+        BlindDate new_blind_date = studentFeign.createBlindDateMatch("MALE", 40);
+        System.out.println( new_blind_date );
     }
 }
