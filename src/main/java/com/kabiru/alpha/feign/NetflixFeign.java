@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name="netflixFeign", url="http://127.0.0.1:8000/", configuration = FeignConfig.class)
+@FeignClient(name="netflixFeign", url="http://10.51.36.220:9000/", configuration = FeignConfig.class)
 public interface NetflixFeign {
 
     // Get all users
